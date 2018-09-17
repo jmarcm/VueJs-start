@@ -13,7 +13,13 @@
 <body>
     <!-- our template -->
     <section id="app" class="section container">
-        <ul class="user-list"></ul>
+        <ul class="user-list">
+            <li v-for="user in users">
+                <img width="200" height="200" :src="user.avatar"><br>
+                Name: {{ user.name }}<br>
+                Username: {{ user.username }}
+            </li>
+        </ul>
     </section>
 
     <!-- our javascript -->
@@ -37,21 +43,24 @@
         ];
 
         // plain javascript ===========================
-        const userList = document.querySelector(".user-list");
-        users.forEach(injectUserList);
+        // const userList = document.querySelector(".user-list");
+        // users.forEach(injectUserList);
 
-        function injectUserList(user) {
-            const userItem = document.createElement("li");
-            userItem.innerHTML = `
-                <img src="${user.avatar}" width="200" height="200"><br/>
-                Name: ${user.name}<br/>
-                Username: ${user.username}
-            `;
-            userList.appendChild(userItem);
-        }
+        // function injectUserList(user) {
+        //     const userItem = document.createElement("li");
+        //     userItem.innerHTML = `
+        //         <img src="${user.avatar}" width="200" height="200"><br/>
+        //         Name: ${user.name}<br/>
+        //         Username: ${user.username}
+        //     `;
+        //     userList.appendChild(userItem);
+        // }
         // vue =======================================================
         const app = new Vue({
-        el: '#app'
+        el: '#app',
+        data: {
+            users: users
+        }
         });
   </script>
 </body>
