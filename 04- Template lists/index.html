@@ -38,7 +38,9 @@
 
         // plain javascript ===========================
         const userList = document.querySelector(".user-list");
-        users.forEach(function(user) {
+        users.forEach(injectUserList);
+
+        function injectUserList(user) {
             const userItem = document.createElement("li");
             userItem.innerHTML = `
                 <img src="${user.avatar}" width="200" height="200"><br/>
@@ -46,7 +48,7 @@
                 Username: ${user.username}
             `;
             userList.appendChild(userItem);
-        })
+        }
         // vue =======================================================
         const app = new Vue({
         el: '#app'
