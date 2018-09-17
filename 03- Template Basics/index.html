@@ -13,13 +13,31 @@
 <body>
     <!-- our template -->
     <section id="app" class="section container">
+        
+        <img height="300" width="300" v-bind:src="photo">
+
+        <div class="notification is-success" v-if="isSuccess">
+            We did it! Successfull!
+        </div>
+
+        <div class="notification is-danger" v-if="!isSuccess">
+            We did not do it! Not Successfull!
+        </div>
 
     </section>
 
     <!-- our javascript -->
+    <!--
+        Display an image using v-bind
+        Use v-if for testing
+    -->
     <script>
         const app = new Vue({
-        el: '#app'
+        el: '#app',
+        data: {
+            photo: "https://s3.eu-central-1.amazonaws.com/jmarcm/ID/jean-marc-2.jpg",
+            isSuccess: true
+        }
         });
     </script>
 </body>
