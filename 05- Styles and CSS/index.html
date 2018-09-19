@@ -31,6 +31,37 @@
         <!-- Array Classes ========================================= -->
         <h2 class="title">Array Classes</h2>
 
+            
+            <div class="field">
+                <div class="control">
+                    <label class="radio">
+                        <input type="radio" value="is-info" v-model="color"> Info
+                    </label>
+                    <label class="radio">
+                        <input type="radio" value="is-danger" v-model="color"> Danger
+                    </label>
+                    <label class="radio">
+                        <input type="radio" value="is-warning" v-model="color"> Warning
+                    </label>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <label class="radio">
+                        <input type="radio" value="is-small" v-model="size"> Small
+                    </label>
+                    <label class="radio">
+                        <input type="radio" value="is-medium" v-model="size"> Medium
+                    </label>
+                    <label class="radio">
+                        <input type="radio" value="is-large" v-model="size"> Large
+                    </label>
+                </div>
+            </div>
+
+            <button type="button" class="button" v-bind:class="[color, size]">My button</button>
+            
         <!-- ================================================== -->
         <hr>
 
@@ -47,13 +78,20 @@
         const app = new Vue({
         el: '#app',
         data: {
+            // inline classes
             className: "is-success",
             isSuccessful: false,
             isLarge: false,
+
+            // object classes
             notificationStyles: {
                 'is-success': true,
                 'is-size-1': true
-            }
+            },
+
+            // array classes
+            color: "",
+            size: ""
         },
         methods: {
             celebrate: function() {
