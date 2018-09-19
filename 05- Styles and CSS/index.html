@@ -19,6 +19,8 @@
             <div class="notification" v-bind:class="{ 'is-success': isSuccessful, 'is-size-1': isLarge }">
                 I am a notification
             </div>
+
+            <a class="button is-info" v-on:click="celebrate">We did it</a>
         <!-- Object Classes ========================================= -->
         <h2 class="title">Object Classes</h2>
 
@@ -44,8 +46,15 @@
         el: '#app',
         data: {
             className: "is-success",
-            isSuccessful: true,
-            isLarge: true
+            isSuccessful: false,
+            isLarge: false
+        },
+        methods: {
+            celebrate: function() {
+                /* Quand on clique sur le bouton les classes changent */
+                this.isLarge = true;
+                this.isSuccessful = true;   
+            }
         }
         });
     </script>
