@@ -16,11 +16,13 @@
 
         <!-- Inline Classes ========================================= -->
         <h2 class="title">Inline Classes</h2>
-            <div class="notification" v-bind:class="{ 'is-success': isSuccessful }">
+            <div class="notification" v-bind:class="{ 'is-success': isSuccessful, 'is-size-1': isLarge }">
                 I am a notification
             </div>
         <!-- Object Classes ========================================= -->
         <h2 class="title">Object Classes</h2>
+
+              
 
         <!-- Array Classes ========================================= -->
         <h2 class="title">Array Classes</h2>
@@ -42,7 +44,8 @@
         el: '#app',
         data: {
             className: "is-success",
-            isSuccessful: true
+            isSuccessful: true,
+            isLarge: true
         }
         });
     </script>
