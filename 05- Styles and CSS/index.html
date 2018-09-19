@@ -16,14 +16,16 @@
 
         <!-- Inline Classes ========================================= -->
         <h2 class="title">Inline Classes</h2>
-            <div class="notification" v-bind:class="{ 'is-success': isSuccessful, 'is-size-1': isLarge }">
-                I am a notification
-            </div>
+        <div class="notification" v-bind:class="{ 'is-success': isSuccessful, 'is-size-1': isLarge }">
+            I am a notification
+        </div>
 
-            <a class="button is-info" v-on:click="celebrate">We did it</a>
+        <a class="button is-info" v-on:click="celebrate">We did it</a>
         <!-- Object Classes ========================================= -->
         <h2 class="title">Object Classes</h2>
-
+        <div class="notification" v-bind:class="notificationStyles">
+                I am a notification
+            </div>
               
 
         <!-- Array Classes ========================================= -->
@@ -47,7 +49,11 @@
         data: {
             className: "is-success",
             isSuccessful: false,
-            isLarge: false
+            isLarge: false,
+            notificationStyles: {
+                'is-success': true,
+                'is-size-1': true
+            }
         },
         methods: {
             celebrate: function() {
