@@ -16,7 +16,7 @@
 
         <!-- Inline Classes ========================================= -->
         <h2 class="title">Inline Classes</h2>
-            <div class="notification" v-bind:class="className">
+            <div class="notification" v-bind:class="{ 'is-success': isSuccessful }">
                 I am a notification
             </div>
         <!-- Object Classes ========================================= -->
@@ -41,7 +41,8 @@
         const app = new Vue({
         el: '#app',
         data: {
-            className: "is-success"
+            className: "is-success",
+            isSuccessful: true
         }
         });
     </script>
