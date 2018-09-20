@@ -7,7 +7,10 @@
     <!-- css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css">
     <style>
-
+        .is-crazy {
+            position: absolute;
+            transition: 0.3s ease all;
+        }
     </style>
 
     <!-- js -->
@@ -26,6 +29,14 @@
             <a class="button is-danger" @click.prevent="incrementCounter">Count up</a>
         </div>
 
+        <!-- crazy button -->
+        <a
+            class="button is-info is-crazy"
+            :style="buttonOffsets"
+            @mouseenter="moveButton">
+            Catch me if you can!
+        </a>
+
     </section>
 
     <!-- our javascript -->
@@ -33,11 +44,21 @@
         const app = new Vue({
             el: "#app",
             data: {
-                count: 0
+                count: 0,
+                buttonOffsets: {
+                    top: null,
+                    left: null
+                }
             },
             methods: {
                 incrementCounter: function(e) {
                     this.count += 1;
+                },
+                moveButton: function(e) {
+                    this.buttonOffsets = {
+                        top: `${Math.random() * window.innerHeight}px`,
+                        left: `${Math.random() * window.innerWidth}px`
+                    }
                 }
             }
         });
