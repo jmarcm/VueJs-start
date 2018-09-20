@@ -23,7 +23,7 @@
             <h2 class="title is-1">{{ count }}</h2>
 
             <!-- button -->
-            <a class="button is-danger" v-on:click="incrementCounter">Count up</a>
+            <a class="button is-danger" @click.prevent="incrementCounter">Count up</a>
         </div>
 
     </section>
