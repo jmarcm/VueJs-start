@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning Vue Like a Boss!</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css">
+    <style>
+
+    </style>
+
+    <!-- js -->
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <!-- our template -->
+    <section id="app" class="section container">
+        
+        <!-- counter -->
+        <h1 class="title">Counter!</h1>
+        <div class="box content has-text-centered">
+            <h2 class="title is-1">{{ count }}</h2>
+
+            <!-- button -->
+            <a class="button is-danger" v-on:click="incrementCounter">Count up</a>
+        </div>
+
+    </section>
+
+    <!-- our javascript -->
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                count: 0
+            },
+            methods: {
+                incrementCounter: function(e) {
+                    this.count += 1;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
