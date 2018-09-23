@@ -8,21 +8,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css">
     <style>
         .message {
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .message-body   {
-        padding: 0;
-        max-height: 10em;
-        overflow: hidden;
-        transition: 0.3s ease all;
+            padding: 0;
+            max-height: 10em;
+            overflow: hidden;
+            transition: 0.3s ease all;
         }
-        .closed .message-body {
-        max-height: 0;
+        .is-closed .message-body {
+            max-height: 0;
         }
         .message-content {
-        padding: 20px;
+            padding: 20px;
         }
     </style>
 
@@ -32,13 +32,43 @@
 <body>
     <!-- our template -->
     <section id="app" class="section container">
-        
+        <article class="message" :class="accordionClasses">
+            <div class="message-header" @click="toggleAccordion">
+                <p>
+                    Hello world
+                </p>
+                <button class="delete" aria-label="delete"></button>
+            </div>
+            <div class="message-body">
+                <div class="message-content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </div>
+            </div>
+        </article>
     </section>
 
     <!-- our javascript -->
     <script>
         const app = new Vue({
-        el: '#app'
+            el: '#app',
+            data: {
+                isOpen: true
+            },
+            methods: {
+                toggleAccordion: function() {
+                    // toggle classes
+                    this.isOpen = !this.isOpen;
+                }
+            },
+            computed: {
+                accordionClasses: function() {
+                    return {
+                        'is-closed': !this.isOpen,
+                        'is-primary': this.isOpen,
+                        'is-dark': !this.isOpen
+                    }
+                }
+            }
         });
     </script>
 </body>
