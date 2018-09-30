@@ -37,7 +37,15 @@
             <!-- email -->
             <div class="field">
                 <label class="label">Email</label>
-                <input type="email" class="input" name="email" v-model="email">
+                <input
+                    type="email"
+                    class="input"
+                    name="email"
+                    v-model="email"
+                    @blur="validateEmail">
+                <p class="help is-danger" v-if="errors.email">
+                    Please enter a valid email.
+                </p>
             </div>
 
             <!-- submit button -->
@@ -63,13 +71,23 @@
 
             data: {
                 name: "",
-                email: ""
+                email: "",
+                errors: {
+                    name: false,
+                    email: false
+                }
             },
 
             methods: {
                 processForm: function() {
                     console.log({ name: this.name, email: this.email });
                     alert('Processing');
+                },
+                validateEmail: function() {
+                    const isValid = window.isValidEmail(this.email);
+                    console.log(isValid);
+
+                    this.errors.email = !isValid;
                 }
             }
         })
