@@ -31,13 +31,13 @@
             <!-- name -->
             <div class="field">
             <label class="label">Name</label>
-            <input type="text" class="input" name="name">
+            <input type="text" class="input" name="name" v-model="name">
             </div>
 
             <!-- email -->
             <div class="field">
             <label class="label">Email</label>
-            <input type="email" class="input" name="email">
+            <input type="email" class="input" name="email" v-model="email">
             </div>
 
             <!-- submit button -->
@@ -58,7 +58,18 @@
         // plain javscript ==================================
 
         // vue ==========================================
+        const app = new Vue({
+            el: "#signup-form",
 
+            data: {
+                name: "",
+                email: ""
+            },
+
+            method: {
+
+            }
+        })
         // helpers ===============================================
         /**
          * Validate emails
