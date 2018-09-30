@@ -26,25 +26,25 @@
         <div class="box">
 
         <!-- our signup form ===================== -->
-        <form id="signup-form">
+        <form id="signup-form" v-on:submit.prevent="processForm">
 
             <!-- name -->
             <div class="field">
-            <label class="label">Name</label>
-            <input type="text" class="input" name="name" v-model="name">
+                <label class="label">Name</label>
+                <input type="text" class="input" name="name" v-model="name">
             </div>
 
             <!-- email -->
             <div class="field">
-            <label class="label">Email</label>
-            <input type="email" class="input" name="email" v-model="email">
+                <label class="label">Email</label>
+                <input type="email" class="input" name="email" v-model="email">
             </div>
 
             <!-- submit button -->
             <div class="field has-text-right">
-            <button type="submit" class="button is-danger">
-                Submit            
-            </button>
+                <button type="submit" class="button is-danger">
+                    Submit            
+                </button>
             </div>
         </form>
 
@@ -58,7 +58,7 @@
         // plain javscript ==================================
 
         // vue ==========================================
-        const app = new Vue({
+        var app = new Vue({
             el: "#signup-form",
 
             data: {
@@ -66,11 +66,16 @@
                 email: ""
             },
 
-            method: {
-
+            methods: {
+                processForm: function() {
+                    console.log({ name: this.name, email: this.email });
+                    alert('Processing');
+                }
             }
         })
         // helpers ===============================================
+
+
         /**
          * Validate emails
          * Not 100% reliable. Just a quick and dirty check.
