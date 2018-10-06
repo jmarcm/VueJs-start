@@ -6,3 +6,8 @@
     1. Afficher une div s'il y a des gifs | v-if
     2. Faire une boucle | v-for
     3. Afficher l'image | v-bind:src ou :src
+1. Rajouter les informations de l'auteur
+1. **Rajouter une zone de recherche**
+    - bind the input with the query
+    - listen to the input (@keyup)
+    - launch searchGifs

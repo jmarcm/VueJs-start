@@ -6,3 +6,4 @@
     1. Afficher une div s'il y a des gifs | v-if
     2. Faire une boucle | v-for
     3. Afficher l'image | v-bind:src ou :src
+1. **Rajoute les informations de l'auteur**
