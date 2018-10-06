@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning Vue Like a Boss!</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css">
+    <link rel="stylesheet" href="main.css">
+
+    <!-- js -->
+    <script src="https://unpkg.com/vue"></script>
+    <!-- <script src="https://unpkg.com/axios"></script>   -->
+
+    
+</head>
+<body>
+    
+    <!-- our template -->
+    <section id="app" class="section container">
+        <h1 class="title">Trendings</h1>
+        <div class="columns is-multiline" v-if="trendingGifs">
+            <div class="column is-one-quarter" v-for="gif in trendingGifs">
+                <div class="gif-box">
+                    <a target="_blank" v-bind:href="gif.url">
+                        <img v-bind:src="gif.images.original.url">
+                    </a>
+                    <a
+                        class="gif-user"
+                        v-if="gif.user"
+                        v-bind:href="gif.user.profile_url">
+                            <img v-bind:src="gif.user.avatar_url">
+                            {{ gif.user.display_name }}
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- our javascript -->
+    <script>
+        const app = new Vue({
+            el: '#app',
+
+            data: {
+                apiUrl: 'http://api.giphy.com/v1/gifs',
+                apiKey: null,
+                trendingGifs: null,
+            },
+            
+            methods: {
+                fetchGifs: function() {
+                    const settingsUrl = "settings.json";
+                    
+                    if (!self.fetch) {
+                        alert ("pas de fetch");
+                    }
+
+                    this.getSettings(settingsUrl)
+                            .then(this.readData);
+                },
+
+                getSettings: function(settingsUrl) {
+                    return fetch(settingsUrl)
+                        .then((resp) => resp.json())
+                        .then(data => this.apiKey = data.apiKey);
+                },
+
+                readData: function() {
+                    const url = `${this.apiUrl}/trending?api_key=${this.apiKey}&limit=8`;
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            this.trendingGifs = data.data;
+                        });
+                }
+            },
+
+            created: function() {
+                this.fetchGifs();
+            }
+        });
+    </script>
+</body>
+</html>
