@@ -26,24 +26,29 @@
 
         <div class="columns is-multiline" v-if="searchedGifs">
                 <div class="column is-one-quarter" v-for="gif in searchedGifs">
-                    <div class="gif-box">
-                        <a target="_blank" v-bind:href="gif.url">
-                            <img v-bind:src="gif.images.original.url">
-                        </a>
-                        <a
-                            class="gif-user"
-                            v-if="gif.user"
-                            v-bind:href="gif.user.profile_url">
-                                <img v-bind:src="gif.user.avatar_url">
-                                {{ gif.user.display_name }}
-                        </a>
-                    </div>
+                    
+                    <gif-box v-bind:gif="gif"></gif-box>
+
                 </div>
             </div>
 
         <h1 class="title">Trendings</h1>
         <div class="columns is-multiline" v-if="trendingGifs">
             <div class="column is-one-quarter" v-for="gif in trendingGifs">
+
+                <gif-box :gif="gif"></gif-box>
+
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- our javascript -->
+    <script>
+
+        Vue.component("gif-box", {
+            props: ["gif"],
+            template: `
                 <div class="gif-box">
                     <a target="_blank" v-bind:href="gif.url">
                         <img v-bind:src="gif.images.original.url">
@@ -56,13 +61,9 @@
                             {{ gif.user.display_name }}
                     </a>
                 </div>
-            </div>
-        </div>
-        
-    </section>
+            `
+        });
 
-    <!-- our javascript -->
-    <script>
         const app = new Vue({
             el: '#app',
 
