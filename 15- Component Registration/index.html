@@ -35,7 +35,7 @@
     <!-- our javascript -->
     <script>
 
-        Vue.component("gif-box", {
+        const GifBox = {
             props: ["gif"],
             template: `
                 <div class="gif-box">
@@ -51,10 +51,13 @@
                     </a>
                 </div>
             `
-        });
+        };
 
-        Vue.component("gif-grid", {
+        const GifGrid = {
             props: ['gifs'],
+            components: {
+                "gif-box": GifBox
+            },
             template: `
                 <div class="columns is-multiline" v-if="gifs">
                     <div class="column is-one-quarter" v-for="gif in gifs">
@@ -64,10 +67,14 @@
                     </div>
                 </div>
             `
-        });
+        };
 
         const app = new Vue({
             el: '#app',
+
+            components: {
+                "gif-grid": GifGrid
+            },
 
             data: {
                 apiUrl: 'http://api.giphy.com/v1/gifs',
