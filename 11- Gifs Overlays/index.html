@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning Vue Like a Boss!</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css">
+
+    <!-- js -->
+    <script src="https://unpkg.com/vue"></script>
+    <!-- <script src="https://unpkg.com/axios"></script>   -->
+</head>
+<body>
+    <!--
+        1. Récupérer l'ensemble des données depuis Giphy
+        2. Récupérer les données souhaitées
+            2.1. Utiliser la fonction fetch
+            2.2. Utiliser la méthode .json()
+        3. Afficher les données
+            3.1. Afficher une div s'il y a des gifs | v-if
+            3.2. Faire une boucle | v-for
+            3.3. Afficher l'image | v-bind:src ou :src
+    -->
+    
+    <!-- our template -->
+    <section id="app" class="section container">
+
+        <div v-if="gifs" v-for="gif in gifs">
+            <img v-bind:src="gif.images.original.url">
+        </div>
+        
+    </section>
+
+    <!-- our javascript -->
+    <script>
+        const app = new Vue({
+            el: '#app',
+
+            data: {
+                // test giphy api key
+                // if the usage limit has been hit, visit https://developers.giphy.com to get a new one
+                // 80bfcbf357864cd18518c324f47a7098
+                apiUrl: 'http://api.giphy.com/v1/gifs',
+                apiKey: '80bfcbf357864cd18518c324f47a7098',
+                gifs: null
+            },
+            
+            methods: {
+                fetchGifs: function() {
+                    const url = `${this.apiUrl}/trending?api_key=${this.apiKey}`;
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            this.gifs = data.data
+                            console.log(data.data);
+                        })
+                        // .then(console.log);
+                }
+                // .then(response => response.json())
+                //     .then(data => this.gifs = data.data);
+            },
+
+            created: function() {
+                this.fetchGifs();
+            }
+        });
+    </script>
+</body>
+</html>
