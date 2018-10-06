@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Read JSON settings file</title>
+</head>
+<body>
+    <script>
+        // const url = "https://randomuser.me/api/?results=10";
+        const url = "settings.json";
+        let params;
+        fetch(url)
+            .then((response) => response.json()) // Transform the data into json
+            .then(function(data) {
+                // Create and append the li's to the ul
+                console.log(data);
+                params = data;
+            });
+        console.log({params});
+    </script>
+</body>
+</html>
