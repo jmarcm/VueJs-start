@@ -13,4 +13,4 @@
     - launch searchGifs
 1. Remplace un section répétée par un compoent (Vue.component())
 1. Continue à remplacer les sections en utilisant un "component" qui englobe un autre "component"
-1. Déclare et initialise les "components" localement
+1. **Déclare et initialise les "components" localement**
