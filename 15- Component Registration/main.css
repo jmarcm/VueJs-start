@@ -1,0 +1,22 @@
+.gif-box {
+    position: relative;
+}
+
+.gif-user {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+
+    display: flex;
+    align-items: center;
+
+}
+
+.gif-user img {
+    width: 40px;
+    margin-right: 8px;
+}
+
+input[name=query] {
+    margin-bottom: 30px;
+}
