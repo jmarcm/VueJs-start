@@ -11,4 +11,5 @@
     - bind the input with the query
     - listen to the input (@keyup)
     - launch searchGifs
-1. **Remplace un section répétée par un compoent (Vue.component())**
+1. Remplace un section répétée par un compoent (Vue.component())
+1. **Continue à remplacer les sections en utilisant un "component" qui englobe un autre "component"**

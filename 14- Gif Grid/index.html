@@ -24,22 +24,11 @@
         <input type="text" name="query" class="input"
                 v-model="query" @keyup="searchGifs">
 
-        <div class="columns is-multiline" v-if="searchedGifs">
-                <div class="column is-one-quarter" v-for="gif in searchedGifs">
-                    
-                    <gif-box v-bind:gif="gif"></gif-box>
-
-                </div>
-            </div>
+        <gif-grid :gifs="searchedGifs"></gif-grid>
 
         <h1 class="title">Trendings</h1>
-        <div class="columns is-multiline" v-if="trendingGifs">
-            <div class="column is-one-quarter" v-for="gif in trendingGifs">
-
-                <gif-box :gif="gif"></gif-box>
-
-            </div>
-        </div>
+        
+        <gif-grid :gifs="trendingGifs"></gif-grid>
         
     </section>
 
@@ -64,6 +53,19 @@
             `
         });
 
+        Vue.component("gif-grid", {
+            props: ['gifs'],
+            template: `
+                <div class="columns is-multiline" v-if="gifs">
+                    <div class="column is-one-quarter" v-for="gif in gifs">
+
+                        <gif-box :gif="gif"></gif-box>
+
+                    </div>
+                </div>
+            `
+        });
+
         const app = new Vue({
             el: '#app',
 
@@ -76,7 +78,7 @@
             },
             
             methods: {
-                fetchGifs: function() {
+                fetchTrendingGifs: function() {
                     const settingsUrl = "settings.json";
                     
                     if (!self.fetch) {
@@ -109,7 +111,7 @@
             },
 
             created: function() {
-                this.fetchGifs();
+                this.fetchTrendingGifs();
             }
         });
     </script>
